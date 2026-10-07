@@ -1,0 +1,26 @@
+# Deploy on Render (https://render.com). Push this repo to GitHub, then in Render:
+#   New +  →  Blueprint  →  pick the repo. Render reads this file.
+services:
+  - type: web
+    name: furlongbets-post-parade
+    runtime: node
+    plan: starter            # a paid plan is required for a persistent disk
+    buildCommand: npm install --omit=dev
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "1"
+      - key: DAY_TZ
+        value: America/New_York
+      - key: DB_PATH
+        value: /data/furlongbets.db
+      - key: SESSION_SECRET
+        generateValue: true   # Render generates a strong random value
+      - key: SERVER_SALT
+        generateValue: true
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
