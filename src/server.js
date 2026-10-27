@@ -35,11 +35,11 @@ app.use(helmet({
     useDefaults: true,
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
       fontSrc: ["'self'", 'https://fonts.gstatic.com'],
       imgSrc: ["'self'", 'data:'],
-      connectSrc: ["'self'", "https://dfeuxpsydnispfjqjwij.supabase.co"],
+      connectSrc: ["'self'"],
       objectSrc: ["'none'"],
       frameAncestors: ["'none'"],
       baseUri: ["'self'"]
